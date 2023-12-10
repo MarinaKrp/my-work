@@ -1,0 +1,68 @@
+{
+	"info": {
+		"cmd": "newman run <path to>/test.postman_collection -e <path to>/testenv.postman_environment.json",
+		"name": "Test"
+	},
+	"item": [
+		{
+			"name": "Request to MessIntegrator",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"update_id\": 948905405,\r\n\t\"message\": {\r\n\t\t\"message_id\": 192, \r\n\t\t\"from\": {\r\n\t\t\t\"id\": {{id}}, \r\n\t\t\t\"is_bot\": false, \r\n\t\t\t\"first_name\": \"{{first_name}}\", \r\n\t\t\t\"language_code\": \"ru\"\r\n\t\t}, \r\n\t\t\"chat\": {\r\n\t\t\t\"id\": {{id}}, \r\n\t\t\t\"first_name\": \"{{first_name}}\",\r\n\t\t\t\"type\": \"private\"\r\n\t\t}, \r\n\t\t\"date\": 1701787525, \r\n\t\t\"text\": \"/info\", \r\n\t\t\"entities\": [\r\n\t\t\t{\r\n\t\t\t\t\"offset\": 0, \r\n\t\t\t\t\"length\": 5, \r\n\t\t\t\t\"type\": \"bot_command\"\r\n\t\t\t}\r\n\t\t]\r\n\t}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{tg_inc_data}}/{{alias}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{tg_inc_data}}",
+						"{{alias}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
